@@ -1,4 +1,5 @@
 #from typing_extensions import Required
+import os
 from flask import Flask
 import flask_restful as restful
 from flask_restful import Api
@@ -13,7 +14,7 @@ from resources.store import Store, StoreList
 app = Flask(__name__)
 # We are disabling Flask-SQLAlchemy modification tracer but it does not turn off 
 #SQLAlchemy modification tracker
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///noman.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///noman.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
