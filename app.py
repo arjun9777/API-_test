@@ -14,7 +14,7 @@ from resources.store import Store, StoreList
 app = Flask(__name__)
 # We are disabling Flask-SQLAlchemy modification tracer but it does not turn off 
 #SQLAlchemy modification tracker
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///noman.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') #'sqlite:///noman.db'(use this as second argument for local development)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
